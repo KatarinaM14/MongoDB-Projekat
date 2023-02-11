@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 
 //Lista validnih refresh tokena (cuva se na serverskoj strani, zbog sigurnosti):
 //Ukoliko neko ukrade token, nakon isteka vremena nece moci nista da uradi bez refresh token-a!
-//Opet, moze i on da se ukrade ali je dosta vece cimanje za isto!
 let refreshTokens = [];
 
 //Metoda za generisanje tokena:
@@ -53,7 +52,6 @@ export const auth = (req, res, next) => {
 };
 
 //Zovemo nakon svake interakcije sa nekim delom sajta
-//FIXME: Ukloni nakon prepravljanja:
 export const refreshAuth = (req, res) => {
     try {
         //Uzimamo refresh token i proveravamo da li je validan?

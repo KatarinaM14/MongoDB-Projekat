@@ -78,15 +78,7 @@ export const updatePost = async (req, res) => {
             //Radimo update:
             await post.updateOne({$set:req.body});
             
-            // Ovo vise ne koristimo:
-            // Za slucaj da se menjaju kategorije, posto moramo da ih trazimo preko id-ja:
-            // if(req.body.categories) {
-            //     console.log(req.body.categories);
-            //     const categoriesId = await findCategorisIds(req.body.categories);
-            //     console.log(categoriesId);
-            //     await post.updateOne({categories: categoriesId});
-            // }
-
+    
             return res.status(200).json("Post is updated!");
         } 
         else {
@@ -131,9 +123,7 @@ export const donateToPost = async (req, res) => {
         if(!post)
             return res.status(404).json("Post not found!");
 
-        //E sad, niko nam ne brani da vise puta doniramo, mada u okviru jedne donacije mozemo da podrazumevamo i jedan komad
-        //odece i nekoliko razlicitih komada odece, tako da ce ostati da je moguce samo jednom donirati, a koliko stvari ce biti donirano 
-        //zavisi od donatora!
+       
         //Ako jos uvek nije zabelezena donacija:
         if(!post.donators.includes(req.body.userId)) {
             //Trazimo korisnika:
@@ -231,8 +221,7 @@ export const friendPosts = async (req, res) => {
     }
 };
 
-//Metoda koja vraca sve postove jednog korisnika, ne mora da se eksporuje,
-//samo se koristi kao poziv unutar metode koja stvarno vraca podatke:
+
 export const getUsetPosts = async (id) => {
     try {
         let postList = [];

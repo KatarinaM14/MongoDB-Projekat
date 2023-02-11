@@ -13,10 +13,6 @@ router.post('/:volId/register', auth, registerToVolunteer);
 //Metoda za prikaz svih volontera prijavljenih:
 router.get('/:id', allRegistred);
 
-//Ne koristimo vise:
-//Metoda za prikaz filtriranih podataka:
-// router.post('/filter', findByCategories);
-
 //Metoda za vracanje svih volontiranja koje je kreirao korisnik:
 router.get('/:userId/all', getAllVolunteernigs);
 

@@ -47,16 +47,7 @@ export const createVolunteering = async (req, res) => {
         //Cuvamo volontiranje:
         const savedVol = await vol.save();
 
-        //Ne koristimo vise:
-        //Ako je poslao kategorije uopste?
-        // if(req.body.categories) {
-        //     //Vracamo id-jeve kategorija:
-        //     const categoriesIds = await findCategorisIds(req.body.categories);
-        //     await savedVol.updateOne({category: categoriesIds});
-        // }
-
-        // await creator.updateOne({$push:{volunteerings: savedVol._id}});
-        //Sacuvano je sve!
+    
         return res.status(200).json(savedVol);
     
     } catch (err) {
@@ -149,45 +140,6 @@ export const getAll = async (req, res) => {
     }
 }
 
-//Ne koristimo vise:
-// //Metoda za vracanje svih volontiranja sa datom kategorijom:
-// export const findByCategories = async (req, res) => {
-//     try {
-//         //Proveravamo da li smo poslali uslove za filtriranje?
-//         if(!req.body.categories)
-//             return res.status(400).json("No parameters set!");
-        
-//         //Vracamo id-jeve svih kategorija:
-//         let categoriesIds = [];
-//         categoriesIds = await findCategorisIds(req.body.categories);
-        
-//         let allVolunteernigsIds = [];       //Za cuvanje id-jeva vec pronadjenih objekta
-//         let allVolunteernigsObjects = [];   //Za cuvanje odgovarajucih objekta
-
-//         //Filtriramo samo unique vrednosti:
-//         for(let i = 0; i < categoriesIds.length; i++) {
-//             //Vracamo sve koji imaju ovu kategoriju:
-//             let firstArray = await Volunteering.find({category: categoriesIds[i]});
-
-//             for(let j = 0; j < firstArray.length; j++) {    //Ovde su svi sa tipom npr "Novac"
-//                 if(await !isIncluded(allVolunteernigsIds, firstArray[j])) {     //Proveravamo da li smo sacuvali ovo volontiranje ili ne?
-//                     await allVolunteernigsIds.push(firstArray[j]._id);           //Inace cuvamo id kao upotrebljen!
-//                     await allVolunteernigsObjects.push(firstArray[j]);        //A cuvamo i objekat da ne bi morali opet da ih pretrazujemo!
-//                 }
-//             }
-//         }
-
-//         if(allVolunteernigsObjects.length === 0)
-//             return res.status(404).json("There are no objects that meet the criteria!");
-//         else 
-//             return res.status(200).json(allVolunteernigsObjects);
-        
-//     } catch (err) {
-//         return res.status(500).json(err);
-//     }
-// };
-
-
 export const updateVolunteernig = async (req, res) => {
     try {
         //Proveravamo da li je korisnik uopste prosledjen:
@@ -251,8 +203,7 @@ export const deleteVolunteernig = async (req, res) => {
     }
 };
 
-//Proverava da li je argument seccond deo liste first, zbog asinhronih poziva nekako sam morao
-//da se snadjem:
+//Proverava da li je argument seccond deo liste first
 export const isIncluded = async (first, seccond) => {
     if(first.includes(seccond)) return true;
     return false;

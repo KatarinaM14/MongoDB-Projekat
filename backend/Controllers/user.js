@@ -56,7 +56,7 @@ export const userLogin = async (req, res) => {
         //Proveravamo sifru za slucaj da smo pronasli korisnika:
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if(!validPassword)
-            return res.status(400).json("Wrong password!"); //Pravilo problem, vise ne bi trebalo!
+            return res.status(400).json("Wrong password!");
         
         //Generisemo tokene:
         const token = generateAccessToken(user);
@@ -97,7 +97,7 @@ export const updateUser = async (req, res) => {
             _id: req.params.id 
         };
 
-        //{$set: req.body} <-- postavi sve vrednosti koje su poslate preko body-ja kao nove:
+       
         const user = await User.findByIdAndUpdate(req.params.id, updatedUser);
         return res.status(200).json(updatedUser);
 

@@ -10,7 +10,7 @@ router.post('/register', registerUser);
 //Try to login as user: 
 router.post('/login', userLogin);
 
-// //Update user:
+//Update user:
 router.put('/:id', auth, updateUser);
 
 //Delete user:

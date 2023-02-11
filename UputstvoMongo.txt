@@ -1,0 +1,8 @@
+-Mail i sifra za pristup MongoDB bazi:
+	email:  nekonepoznat777@gmail.com
+	sifra:    lozinka12378
+
+-Ukoliko zelimo da se prijavimo kao admin i da imamo njegove funkcionalnosti potrebno je uneti:
+	email:          admin@gmail.com
+	password:   admin
+

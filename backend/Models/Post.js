@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
-    creatorId: {        //Kreator posta
+    creatorId: {        
         type: String,
         required: true
     },
@@ -14,7 +14,7 @@ const PostSchema = new mongoose.Schema({
         max: 100
     },
     data: {             
-        type: String,   //Opis zahteva/ponude
+        type: String,   
         max: 5000,
         default: ""
     },
@@ -22,19 +22,19 @@ const PostSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    categories: {       //Kategorije pomoci
+    categories: {       
         type: [String],
         default: []
     },
-    city: {             //Grad, obavezan
+    city: {             
         type: String,
         required: true
     },
-    address: {          //Tacna adresa, nije obavezna
+    address: {         
         type: String,
         default: ""
     },
-    contact: {          //Brojevi telefona?
+    contact: {          
         type: String,
         default: ""
     },
